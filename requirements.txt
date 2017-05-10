@@ -1,0 +1,5 @@
+elasticsearch>=5.0.0,<6.0.0
+google-cloud-storage
+google-cloud-logging
+google-cloud-bigquery
+git+https://github.com/ciandt-d1/cvtool-images-python-client.git
