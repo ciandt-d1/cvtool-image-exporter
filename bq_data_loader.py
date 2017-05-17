@@ -26,16 +26,57 @@ SCHEMA = [
         SchemaField('value', 'STRING', mode='REQUIRED')
     ]),
 
-    # TODO add vision annotations
-    # https://gist.github.com/fabito/7ce94d3163e526aeea915637920b0292
-    # vision_annotations
-    SchemaField('vision_annotations', 'RECORD', mode='REPEATED', fields=[
-        SchemaField('key', 'STRING', mode='REQUIRED'),
-        SchemaField('value', 'STRING', mode='REQUIRED')
-    ]),
-    SchemaField('annotations', 'RECORD', mode='REPEATED', fields=[
-        SchemaField('key', 'STRING', mode='REQUIRED'),
-        SchemaField('value', 'STRING', mode='REQUIRED')
+    SchemaField('vision_annotations', 'RECORD', mode='NULLABLE', fields=[
+        SchemaField('safeSearchAnnotation', 'RECORD', mode='NULLABLE', fields=[
+            SchemaField('adult', 'STRING', mode='NULLABLE'),
+            SchemaField('spoof', 'STRING', mode='NULLABLE'),
+            SchemaField('medical', 'STRING', mode='NULLABLE'),
+            SchemaField('violence', 'STRING', mode='NULLABLE')
+        ]),
+        SchemaField('labelAnnotations', 'RECORD', mode='REPEATED', fields=[
+            SchemaField('mid', 'STRING', mode='NULLABLE'),
+            SchemaField('locale', 'STRING', mode='NULLABLE'),
+            SchemaField('description', 'STRING', mode='NULLABLE'),
+            SchemaField('score', 'FLOAT', mode='NULLABLE'),
+            SchemaField('boundingPoly', 'RECORD', mode='REPEATED', fields=[
+                SchemaField('x', 'STRING', mode='NULLABLE'),
+                SchemaField('y', 'STRING', mode='NULLABLE')
+            ])
+        ]),
+        SchemaField('landmarkAnnotations', 'RECORD', mode='REPEATED', fields=[
+            SchemaField('mid', 'STRING', mode='NULLABLE'),
+            SchemaField('locale', 'STRING', mode='NULLABLE'),
+            SchemaField('description', 'STRING', mode='NULLABLE'),
+            SchemaField('score', 'FLOAT', mode='NULLABLE'),
+            SchemaField('boundingPoly', 'RECORD', mode='REPEATED', fields=[
+                SchemaField('x', 'STRING', mode='NULLABLE'),
+                SchemaField('y', 'STRING', mode='NULLABLE')
+            ])
+        ]),
+        SchemaField('logoAnnotations', 'RECORD', mode='REPEATED', fields=[
+            SchemaField('mid', 'STRING', mode='NULLABLE'),
+            SchemaField('locale', 'STRING', mode='NULLABLE'),
+            SchemaField('description', 'STRING', mode='NULLABLE'),
+            SchemaField('score', 'FLOAT', mode='NULLABLE'),
+            SchemaField('boundingPoly', 'RECORD', mode='REPEATED', fields=[
+                SchemaField('x', 'STRING', mode='NULLABLE'),
+                SchemaField('y', 'STRING', mode='NULLABLE')
+            ])
+        ]),
+        SchemaField('imagePropertiesAnnotation', 'RECORD', mode='NULLABLE', fields=[
+            SchemaField('dominantColors', 'RECORD', mode='NULLABLE', fields=[
+                SchemaField('colors', 'RECORD', mode='REPEATED', fields=[
+                    SchemaField('pixelFraction', 'FLOAT', mode='NULLABLE'),
+                    SchemaField('score', 'FLOAT', mode='NULLABLE'),
+                    SchemaField('color', 'RECORD', mode='NULLABLE', fields=[
+                        SchemaField('red', 'FLOAT', mode='NULLABLE'),
+                        SchemaField('green', 'FLOAT', mode='NULLABLE'),
+                        SchemaField('blue', 'FLOAT', mode='NULLABLE'),
+                        SchemaField('alpha', 'FLOAT', mode='NULLABLE')
+                    ]),
+                ])
+            ])
+        ])
     ])
 ]
 

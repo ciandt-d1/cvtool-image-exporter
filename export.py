@@ -58,11 +58,15 @@ def main():
                 image_to_dict = image.to_dict()
 
                 del image_to_dict['annotations']
-                del image_to_dict['vision_annotations']
+                # del image_to_dict['vision_annotations']
 
                 exif_annotations_dict = image_to_dict.pop('exif_annotations', {})
                 if exif_annotations_dict:
                     image_to_dict['exif_annotations'] = [dict(key=k, value=v) for k, v in exif_annotations_dict.items()]
+
+                vision_annotations_dict = image_to_dict.pop('vision_annotations', {})
+                if vision_annotations_dict:
+                    image_to_dict['vision_annotations'] = json.loads(vision_annotations_dict)
 
                 tmp_file.write(_to_bytes(json.dumps(image_to_dict) + '\n', encoding='utf-8'))
             offset += limit
