@@ -39,8 +39,8 @@ SCHEMA = [
             SchemaField('description', 'STRING', mode='NULLABLE'),
             SchemaField('score', 'FLOAT', mode='NULLABLE'),
             SchemaField('boundingPoly', 'RECORD', mode='REPEATED', fields=[
-                SchemaField('x', 'STRING', mode='NULLABLE'),
-                SchemaField('y', 'STRING', mode='NULLABLE')
+                SchemaField('x', 'INTEGER', mode='NULLABLE'),
+                SchemaField('y', 'INTEGER', mode='NULLABLE')
             ])
         ]),
         SchemaField('landmarkAnnotations', 'RECORD', mode='REPEATED', fields=[
@@ -49,8 +49,8 @@ SCHEMA = [
             SchemaField('description', 'STRING', mode='NULLABLE'),
             SchemaField('score', 'FLOAT', mode='NULLABLE'),
             SchemaField('boundingPoly', 'RECORD', mode='REPEATED', fields=[
-                SchemaField('x', 'STRING', mode='NULLABLE'),
-                SchemaField('y', 'STRING', mode='NULLABLE')
+                SchemaField('x', 'INTEGER', mode='NULLABLE'),
+                SchemaField('y', 'INTEGER', mode='NULLABLE')
             ])
         ]),
         SchemaField('logoAnnotations', 'RECORD', mode='REPEATED', fields=[
@@ -59,8 +59,8 @@ SCHEMA = [
             SchemaField('description', 'STRING', mode='NULLABLE'),
             SchemaField('score', 'FLOAT', mode='NULLABLE'),
             SchemaField('boundingPoly', 'RECORD', mode='REPEATED', fields=[
-                SchemaField('x', 'STRING', mode='NULLABLE'),
-                SchemaField('y', 'STRING', mode='NULLABLE')
+                SchemaField('x', 'INTEGER', mode='NULLABLE'),
+                SchemaField('y', 'INTEGER', mode='NULLABLE')
             ])
         ]),
         SchemaField('imagePropertiesAnnotation', 'RECORD', mode='NULLABLE', fields=[
